@@ -60,7 +60,6 @@ router.post('/verify', async (req, res) => {
             .create({ to: phone, code });
 
         if (verificationCheck.status === 'approved') {
-
             const user = await User.findOneAndUpdate({ phone }, { isVerified: true });
             const token = jwt.sign({ phone: user.phone }, process.env.JWT_SECRET);
             res.status(200).json({ token });
@@ -78,15 +77,12 @@ router.post('/login', async (req, res) => {
     const { phone, password } = req.body;
     try {
         const user = await User.findOne({ phone });
-
         if (!user) {
             return res.status(401).send('User is not registered');
         }
-
         if (!user.isVerified) {
             return res.status(401).send('User is not verified');
         }
-
         if (user && await bcrypt.compare(password, user.password)) {
             const token = jwt.sign({ phone: user.phone }, process.env.JWT_SECRET);
             res.json({ token });
