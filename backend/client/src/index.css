@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.opt-container {
+  @apply flex justify-between gap-2;
+}
+.opt-container input {
+  @apply !mr-0 flex-1 py-5 outline-none;
+}
+.react-tel-input .form-control {
+  @apply !w-full  !text-base rounded-md border-none py-[10px] px-[15px] my-[8px] bg-slate-100;
+}
+
 
 body {
   margin: 0;
