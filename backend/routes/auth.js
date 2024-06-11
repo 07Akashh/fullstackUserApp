@@ -48,7 +48,8 @@ router.post('/register', async (req, res) => {
         }
     } catch (error) {
         console.error(error);
-        res.status(500).send('Error registering user');
+        // res.status(500).send( error,'Error registering user');
+        res.status(500).send(error)
     }
 });
 
@@ -78,10 +79,10 @@ router.post('/login', async (req, res) => {
     try {
         const user = await User.findOne({ phone });
         if (!user) {
-            return res.status(401).send('User is not registered');
+            return res.status(401).send('User not found');
         }
         if (!user.isVerified) {
-            return res.status(401).send('User is not verified');
+            return res.status(401).send('User not found');
         }
         if (user && await bcrypt.compare(password, user.password)) {
             const token = jwt.sign({ phone: user.phone }, process.env.JWT_SECRET);
