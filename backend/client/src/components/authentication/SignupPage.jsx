@@ -89,7 +89,7 @@ const SignUp = () => {
             <input type="password" placeholder="Password" name='password' required />
             <input type="password" placeholder="Confirm password" name='confirmPassword' required />
             {error && <p style={{ color: 'red' }}>{error}</p>}
-            <button type='submit'>Sign Up</button>
+            <button  className=' bg-blue-500 text-white rounded-xl hover:bg-blue-600 text-xs py-2.5 px-5 font-bold uppercase cursor-pointer mt-5' type='submit'>Sign Up</button>
           </form>
         </div>
         

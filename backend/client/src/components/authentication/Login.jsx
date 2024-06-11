@@ -6,7 +6,7 @@ import './form.css'
 import axios from 'axios'
 
 
-const LogIn = () => {
+const LoginPage = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -40,7 +40,7 @@ const LogIn = () => {
 
 
     try {
-      const response = await axios.post('http://localhost:3002/api/auth/register', data);
+      const response = await axios.post('http://localhost:3002/api/auth/login', data);
       console.log('Response:', response.data);
       toast.success(response.data, {
         position: "top-center",
@@ -77,27 +77,25 @@ const LogIn = () => {
 
   return (
     <div className=' '>
-      <div className={`container active `} id="container">
+      <div className=' w-[768px] relative max-w-[100%] min-h-[480px] bg-white shadow-2xl overflow-hidden '>
       <ToastContainer />
-        <div className="form-container sign-up">
-          <form onSubmit={handleSubmit}>
-            <h1>Create Account</h1>
+        <div className="absolute top-0 h-[100%] w-[50%] translate-x-full">
+          <form onSubmit={handleSubmit} className='flex align-middle h-[100%] px-[40px] content-center justify-center flex-col '>
+            <h1>Sign In</h1>
             <span>or use your email for registeration</span>
-            <input type="text" placeholder="Name" name='name' required />
-            <input type="number" placeholder="Phone" name='phone' required />
-            <input type="email" placeholder="Email" name='email' required />
-            <input type="password" placeholder="Password" name='password' required />
-            <input type="password" placeholder="Confirm password" name='confirmPassword' required />
+            <input className=' bg-slate-100 border-none my-[8px] mx-0 py-[10px] px-[15px] rounded-md text-[13px] w-[100%] outline-transparent' type="number" placeholder="Phone" name='phone' required />
+            <input className=' bg-slate-100 border-none my-[8px] mx-0 py-[10px] px-[15px] rounded-md text-[13px] w-[100%] outline-transparent' type="password" placeholder="Password" name='password' required />
+            <input className=' bg-slate-100 border-none my-[8px] mx-0 py-[10px] px-[15px] rounded-md text-[13px] w-[100%] outline-transparent' type="password" placeholder="Confirm password" name='confirmPassword' required />
             {error && <p style={{ color: 'red' }}>{error}</p>}
-            <button type='submit'>Sign Up</button>
+            <button className=' bg-blue-500 text-white rounded-xl hover:bg-blue-600 text-xs py-2.5 px-10 font-bold uppercase cursor-pointer mt-5' type='submit'>Sign Up</button>
           </form>
         </div>
         
-        <div className="toggle-container">
-          <div className="toggle">
-            <div className="toggle-panel toggle-left">
+        <div className="absolute top-0 left-[0%] w-[50%] h-[100%] overflow-hidden z-10">
+          <div className=" bg-blue-500 h-[100%] bg-gradient-to-r text-white relative  w-[200%]">
+            <div className="flex absolute w-[50%] h-[100%] align-middle justify-center flex-col py-0 px-[30px] text-center top-0  transition-all">
               <h1>Hello, Friend!</h1>
-              <p>Register with your personal details to use all of site features</p>
+              <p className='text-md my-[20px]'>Register with your personal details to use all of site features</p>
             </div>
             
           </div>
@@ -109,4 +107,4 @@ const LogIn = () => {
   )
 }
 
-export default LogIn
+export default LoginPage

@@ -63,7 +63,7 @@ phone = phone.replace(/["\\]/g, '').toString();
             <span>or use your email for registeration</span>
             <input type="number" placeholder="Otp" name='otp' required />
             {error && <p style={{ color: 'red' }}>{error}</p>}
-            <button type='submit'>Verify Otp</button>
+            <button  className=' bg-blue-500 text-white rounded-xl hover:bg-blue-600 text-xs py-2.5 px-5 font-bold uppercase cursor-pointer mt-5' type='submit'>Verify Otp</button>
           </form>
         </div>
         
@@ -73,7 +73,6 @@ phone = phone.replace(/["\\]/g, '').toString();
               <h1>Hello, Friend!</h1>
               <p>Register with your personal details to use all of site features</p>
             </div>
-            
           </div>
         </div>
       </div>
