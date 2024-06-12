@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,20 +11,18 @@
   @apply !mr-0 flex-1 py-5 outline-none;
 }
 .react-tel-input .form-control {
-  @apply !w-full  !text-base rounded-md border-none py-[10px] px-[15px] my-[8px] bg-slate-100;
+  @apply sm:w-full  !text-base rounded-md border-none py-[10px] px-[15px] my-[8px] w-[220px] bg-slate-100;
 }
-
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  @apply  flex items-center justify-center flex-col min-h-screen;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  @apply m-0 p-0 box-border font-sans;
+}
+
+body{
+  background-color: #c9d6ff;
+  background: linear-gradient(to right, #e2e2e2, #c9d6ff);
 }

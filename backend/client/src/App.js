@@ -4,18 +4,30 @@ import SignUp from './components/authentication/SignupPage';
 import AuthPages from './components/authentication/Authpage';
 import DashBoard from './components/dashboard/DashBoard';
 import LoginPage from './components/authentication/Login';
+import { AuthProvider } from './security/AuthContext';
+import PrivateRoute from './security/PrivateRoute';
 
 
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<SignUp/>}/>
-        <Route path="/verify" element={<AuthPages/>}/>
-        <Route path='/home' element={<DashBoard/>}/>
-        <Route path='/login' element={<LoginPage/>}/>
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/register" element={<SignUp />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/verify" element={
+            <PrivateRoute>
+              <AuthPages />
+            </PrivateRoute>
+          } />
+          <Route path="/" element={
+            <PrivateRoute redirectTo='/home'>
+              <DashBoard />
+            </PrivateRoute>
+          } />
+        </Routes>
+      </AuthProvider>
     </>
   );
 }
