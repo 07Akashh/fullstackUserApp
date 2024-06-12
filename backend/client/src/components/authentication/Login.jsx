@@ -26,7 +26,7 @@ const LoginPage = () => {
     try {
       const response = await axios.post('http://localhost:3002/api/auth/login', data);
       console.log('Response:', response.data);
-      toast.success(response.data, {
+      toast.success(response.data.msg, {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
