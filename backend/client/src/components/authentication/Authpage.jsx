@@ -31,7 +31,7 @@ const AuthPages = () => {
       const response = await axios.post('http://localhost:3002/api/auth/verify', data);
       console.log('Response:', response.data);
       localStorage.setItem('token', JSON.stringify(response.data))
-      toast.success(response.data, {
+      toast.success(`Welcome ${data}`, {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -44,7 +44,16 @@ const AuthPages = () => {
       setRedirect(true);
       verify()
     } catch (error) {
-      console.error('Error posting data:', error);
+      toast.error(error.response.data,{
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
     }
   };
 
