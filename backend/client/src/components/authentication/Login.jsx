@@ -14,22 +14,19 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const [redirect, setRedirect] = useState(false);
  
-  console.log(phone)
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     const data = {
-      name: formData.get('name'),
       phone:'+'+phone,
-      email: formData.get('email'),
       password: formData.get('password'),
     };
-
+    
     try {
       const response = await axios.post('http://localhost:3002/api/auth/login', data);
       console.log('Response:', response.data);
-      toast.success(response.data, {
+      toast.success(response.data.msg, {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -44,7 +41,7 @@ const LoginPage = () => {
         login();
     } catch (error) {
       console.error(error);
-      toast.error('User Already Exists'+error, {
+      toast.error(error.response.data, {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,

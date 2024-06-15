@@ -58,7 +58,7 @@ const SignUp = () => {
       register();
     } catch (error) {
       console.error(error);
-      toast.error('User Already Exists' + error, {
+      toast.error(error.response.data, {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,

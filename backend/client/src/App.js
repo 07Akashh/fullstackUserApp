@@ -6,13 +6,15 @@ import DashBoard from './components/dashboard/DashBoard';
 import LoginPage from './components/authentication/Login';
 import { AuthProvider } from './security/AuthContext';
 import PrivateRoute from './security/PrivateRoute';
+import HeaderPage from './components/dashboard/template/HeaderPage';
 
 
 
 function App() {
   return (
     <>
-      <AuthProvider>
+    <HeaderPage/>
+      {/* <AuthProvider>
         <Routes>
           <Route path="/register" element={<SignUp />} />
           <Route path="/login" element={<LoginPage />} />
@@ -27,7 +29,7 @@ function App() {
             </PrivateRoute>
           } />
         </Routes>
-      </AuthProvider>
+      </AuthProvider> */}
     </>
   );
 }
